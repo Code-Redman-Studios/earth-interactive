@@ -53,7 +53,7 @@ so each account takes minutes.
 
   | Platform | Bio link |
   |---|---|
-  | Instagram | `https://john-redman.github.io/earth-interactive/?utm_source=instagram&utm_medium=social&utm_campaign=bio` |
+  | Instagram | `https://earth-interactive.com/?utm_source=instagram&utm_medium=social&utm_campaign=bio` |
   | TikTok | `…/?utm_source=tiktok&utm_medium=social&utm_campaign=bio` |
   | YouTube | `…/?utm_source=youtube&utm_medium=video&utm_campaign=bio` |
   | X | `…/?utm_source=x&utm_medium=social&utm_campaign=bio` |

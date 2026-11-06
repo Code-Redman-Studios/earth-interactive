@@ -7,15 +7,15 @@
 // Everything here is public: it ends up in the HTML. Never put secrets in this file.
 export const SITE = {
   /** Public address, with a trailing slash. Change (and redeploy) when the custom domain goes live. */
-  url: 'https://john-redman.github.io/earth-interactive/',
+  url: 'https://earth-interactive.com/',
   name: 'EarthInteractive',
   /** Short tagline used in titles and link previews. */
   tagline: 'True size of countries on a 3D globe',
   description: 'Spin a true-to-scale 3D globe, compare the real size of countries side by side, explore facts about every country and play a daily geography game. Free, no sign-up.',
   /** Contact address shown on the pages, e.g. 'hello@example.com'. Empty = link to GitHub issues instead. */
-  contactEmail: '',
-  repoUrl: 'https://github.com/john-redman/earth-interactive',
-  issuesUrl: 'https://github.com/john-redman/earth-interactive/issues',
+  contactEmail: 'hello@earth-interactive.com',
+  repoUrl: 'https://github.com/Code-Redman-Studios/earth-interactive',
+  issuesUrl: 'https://github.com/Code-Redman-Studios/earth-interactive/issues',
   /**
    * The studio this site belongs to: adds an "A <name> project ↗" link to the app's links and every page footer.
    * Empty name = the link stays hidden (fill both in once the studio's domain is live).

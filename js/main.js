@@ -51,8 +51,12 @@ if (!webgl) { showNo3D(false); throw new Error('WebGL 2 unavailable'); }
 
 const data = await loadWorld();
 
-// Offline + instant repeat visits (skipped on localhost so development always sees fresh files)
-if ('serviceWorker' in navigator && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
+// Offline + instant repeat visits (skipped on localhost so development always sees fresh files). Never on a
+// *.github.io address: once the custom domain is set, GitHub redirects those to it, and a worker there could no
+// longer update itself, so it would keep serving its old copy for good. Any worker already there is removed.
+const tempHost = location.hostname.endsWith('.github.io');
+if (tempHost && 'serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(rs => rs.forEach(r => r.unregister())).catch(() => {});
+if ('serviceWorker' in navigator && !tempHost && !/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) {
   const register = () => navigator.serviceWorker.register('sw.js').catch(() => {});
   // A new deploy's worker takes over right after it installs. If that happens in the first seconds of a visit,
   // reload once so the visitor sees the new version instead of the cached old one (never mid-use, never on a

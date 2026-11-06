@@ -10,7 +10,7 @@
 > or two before traffic arrives. Pick a **Monday** as L day so the Show HN and Showoff Saturday slots land on the
 > right weekdays. Ready-to-paste copy for every channel is in [launch-kit.md](launch-kit.md).
 
-**Live:** https://john-redman.github.io/earth-interactive/ (moves to the custom domain once it's bought)
+**Live:** https://earth-interactive.com/ (moves to the custom domain once it's bought)
 **Constraints:** one person, low budget, static hosting on GitHub Pages. The leaderboard is built (Cloudflare
 Worker + D1, or Node + SQLite) but stays dormant until it's deployed after the domain switch.
 

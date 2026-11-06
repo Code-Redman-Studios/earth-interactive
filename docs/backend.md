@@ -152,12 +152,12 @@ sudo apt-get update && sudo apt-get -y upgrade
 curl -fsSL https://get.docker.com | sudo sh          # Docker Engine + compose plugin (official script)
 sudo usermod -aG docker ubuntu && exit               # log out, then ssh back in so the group applies
 
-git clone https://github.com/john-redman/earth-interactive.git
+git clone https://github.com/Code-Redman-Studios/earth-interactive.git
 #   private repo? Run `sudo apt-get install -y gh && gh auth login` first, or clone with a read-only
-#   fine-grained personal access token: https://<token>@github.com/john-redman/earth-interactive.git
+#   fine-grained personal access token: https://<token>@github.com/Code-Redman-Studios/earth-interactive.git
 cd earth-interactive/server/deploy
 cp .env.example .env
-nano .env                    # API_DOMAIN=api.<domain>   ALLOWED_ORIGINS=https://john-redman.github.io,<custom site origin>
+nano .env                    # API_DOMAIN=api.<domain>   ALLOWED_ORIGINS=https://earth-interactive.com,https://www.earth-interactive.com
 mkdir -p data && sudo chown 1000:1000 data           # the container runs as uid 1000 (`node`)
 docker compose up -d --build                         # builds the image, starts api + caddy
 docker compose ps                                    # api should turn "healthy" within ~30 s
@@ -216,7 +216,7 @@ Add a free **HTTP(s) monitor** at <https://uptimerobot.com> for `https://api.<do
 The same server runs as a plain systemd service. You still need steps 1–4 and 6–8.
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash - && sudo apt-get install -y nodejs   # Node 22
-sudo git clone https://github.com/john-redman/earth-interactive.git /opt/earth-interactive
+sudo git clone https://github.com/Code-Redman-Studios/earth-interactive.git /opt/earth-interactive
 sudo useradd --system --home /var/lib/earth-api --shell /usr/sbin/nologin earth
 sudo cp /opt/earth-interactive/server/deploy/.env.example /etc/earth-api.env && sudo nano /etc/earth-api.env   # ALLOWED_ORIGINS
 sudo cp /opt/earth-interactive/server/deploy/earth-api*.{service,timer} /etc/systemd/system/

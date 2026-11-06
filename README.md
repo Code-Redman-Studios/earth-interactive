@@ -2,7 +2,7 @@
 
 An interactive, true-to-scale 3D globe for the browser. Spin it, open any country for facts, compare the real sizes of countries with pop-out puzzle pieces, recolour the world by data, and play a daily geography challenge.
 
-**Live:** https://john-redman.github.io/earth-interactive/
+**Live:** https://earth-interactive.com/
 
 > Public source, all rights reserved — see [LICENSE](LICENSE).
 
@@ -94,7 +94,7 @@ via [`.github/workflows/pages.yml`](.github/workflows/pages.yml):
 1. Runs `npm run check`.
 2. Copies only the app files (`index.html`, `manifest.webmanifest`, `sw.js`, `og-image.png`, `css/`, `js/`, `data/`, `vendor/`, `icons/`, `sounds/`, plus `LICENSE` and notices) into `_site/`, builds the text pages, and stamps the service-worker cache version with the commit.
    `tools/`, `docs/`, `server/`, `app/`, `marketing/` and `node_modules/` are not published.
-3. Uploads and deploys that artefact to https://john-redman.github.io/earth-interactive/.
+3. Uploads and deploys that artefact to https://earth-interactive.com/.
 
 One-time setup: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 To redeploy without a code change, run the workflow manually from the **Actions** tab.

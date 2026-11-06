@@ -5,7 +5,7 @@ Ready to paste. Every number here was read from the app (the compare bar, cards 
 Natural Earth areas. **If the data changes, re-check the numbers in the app before posting.**
 
 Conventions:
-- `SITE` = `https://john-redman.github.io/earth-interactive/`. Replace it once the custom domain is live.
+- `SITE` = `https://earth-interactive.com/`. Replace it once the custom domain is live.
 - Post links are **deep links** (they open the exact view), with **no UTMs**: UTMs belong in bios only
   (plan §8.2), and never on Reddit or HN.
 - Hashtags: 3–5 per post, CamelCase on Mastodon (it helps screen readers).

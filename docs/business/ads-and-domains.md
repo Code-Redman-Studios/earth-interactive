@@ -1,6 +1,6 @@
 # Ads, monetisation and domains: research notes
 
-Researched 2026-10-05 for EarthInteractive (currently `https://john-redman.github.io/earth-interactive/`).
+Researched 2026-10-05 for EarthInteractive (currently `https://earth-interactive.com/`).
 
 > **Reviewed 2026-10-09** against the product as it is now: the site-side steps that are already done are marked
 > **(done)**, and the ad slots' current behaviour is described in §2.4. Network terms, thresholds and prices were
@@ -246,7 +246,7 @@ Superseded by the owner's private brand plan; kept for history.
 
 | # | Name | What web search turned up (not an availability check) | Trademark / confusion notes |
 |---|---|---|---|
-| 1 | **earthinteractive.app** | Only our own GitHub repo and site showed for "EarthInteractive" ([search](https://github.com/john-redman/earth-interactive)) | Generic words; low risk. **Top pick if free.** |
+| 1 | **earthinteractive.app** | Only our own GitHub repo and site showed for "EarthInteractive" ([search](https://github.com/Code-Redman-Studios/earth-interactive)) | Generic words; low risk. **Top pick if free.** |
 | 2 | earthinteractive.com | Not checked; possibly parked (unverified) | Same as above |
 | 3 | earthinteractive.earth | n/a | Repetitive, but on-theme |
 | 4 | globetrue.com | No obvious site seen | Low risk |

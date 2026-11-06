@@ -7,7 +7,7 @@ Ready-to-paste copy for launch and the weeks after. Plain words, no hype.
 
 **Before you paste**
 
-- **`{SITE}`** is the site address. Today that is `https://john-redman.github.io/earth-interactive/`. Launch waits
+- **`{SITE}`** is the site address. Today that is `https://earth-interactive.com/`. Launch waits
   for the domain, so replace `{SITE}` with the domain in one pass once it's live (GitHub redirects the old links,
   see [docs/launch-checklist.md](../launch-checklist.md)). It ends with a slash, so `{SITE}?c=FRA` works.
 - **`{X}`** is a number to read from the app on the day (Compare stats, the card, the lens legend). Never type a
@@ -411,7 +411,7 @@ John
 | **Text pages** | 217 country pages, 150 size comparisons, 27 region pages, 3 rankings |
 | **Data** | Natural Earth (borders and coastlines, public domain); mledoze/countries (country facts, ODbL); World Bank World Development Indicators (population 2025, GDP mostly 2024, CC BY 4.0); UN World Population Prospects 2024 (live population estimate); flag-icons (MIT) |
 | **Built with** | Three.js and plain JavaScript modules. No framework, no build step, static hosting. |
-| **Source** | Public on GitHub (github.com/john-redman/earth-interactive); all rights reserved |
+| **Source** | Public on GitHub (github.com/Code-Redman-Studios/earth-interactive); all rights reserved |
 | **Contact** | Contact address goes here once the domain is live. |
 
 ### 8.2 Three screenshots
@@ -421,15 +421,15 @@ once it's live. The images in `marketing/screenshots/` were re-shot on 12 Octobe
 (`node tools/marketing/run.mjs screenshots` makes them again).
 
 1. **True size: Greenland and DR Congo** (desktop)
-   `https://john-redman.github.io/earth-interactive/?compare=GRL,COD`
+   `https://earth-interactive.com/?compare=GRL,COD`
    Open Compare stats. *Alt:* Greenland and DR Congo lifted off a 3D globe side by side, with a table of their
    areas and populations.
 2. **Country card: France** (desktop)
-   `https://john-redman.github.io/earth-interactive/?c=FRA&view=un`
+   `https://earth-interactive.com/?c=FRA&view=un`
    Choose Info on the pin's tag to open the card. *Alt:* a 3D globe turned to France, with a card showing its
    capital, population, area, neighbours and flag.
 3. **Daily Challenge** (phone)
-   `https://john-redman.github.io/earth-interactive/?play=daily`
+   `https://earth-interactive.com/?play=daily`
    Take it after a miss, when the line and the distance show. *Alt:* a phone showing the Daily Challenge, with a
    line from the player's guess to the right country and the distance in kilometres.
 
