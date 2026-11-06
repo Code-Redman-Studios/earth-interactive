@@ -102,10 +102,8 @@ User-agent: Applebot-Extended
 Disallow: /
 ```
 
-**github.io limitation:** crawlers only read `https://john-redman.github.io/robots.txt` (the host root), which belongs
-to a `john-redman.github.io` repository, not to this project. Without one, nothing is blocked, which is what we want.
-To control crawlers before the custom domain, create that user-site repo with a root `robots.txt` (it affects every
-project site under the account).
+The site lives at the root of `https://earth-interactive.com/`, so `robots.txt`, `llms.txt` and `ads.txt` are found
+where crawlers and ad networks look for them.
 
 ## Config: one file, two mirrors
 
@@ -153,23 +151,18 @@ Nothing is sent on localhost or inside the native app.
 Set `contactEmail` (e.g. a free forwarding address from your domain registrar or Cloudflare Email Routing once the domain exists).
 
 ### 4. Google Search Console
-1. Open <https://search.google.com/search-console> → **Add property** → **URL prefix** → `https://john-redman.github.io/earth-interactive/`.
-   (A *Domain* property needs DNS access, which github.io doesn't give you. It's the better choice once the custom domain exists.)
-2. Verify with **HTML file**: Google gives you a file like `google1234abcd.html`. Commit it to the repo root and add it
-   to the `cp` line in `pages.yml`, push, then click Verify. The file holds only a public token; it is not a secret.
-   (Alternative: the **HTML tag** method — paste the `<meta name="google-site-verification">` tag into `index.html`'s `<head>`.)
-3. **Sitemaps** → submit `sitemap.xml` (full URL `https://john-redman.github.io/earth-interactive/sitemap.xml`).
+1. Open <https://search.google.com/search-console> → **Add property** → **Domain** → `earth-interactive.com`.
+2. Google shows a **TXT record** (`google-site-verification=…`). In Cloudflare → the domain → **DNS → Records → Add
+   record**: Type `TXT`, Name `@`, Content the whole value Google gave, then **Save**. Back in Search Console click
+   **Verify** (it can take a few minutes).
+3. **Sitemaps** → submit `https://earth-interactive.com/sitemap.xml`.
 4. **URL inspection** → request indexing for `/`, `/countries/`, `/compare/` and `/why-maps-lie.html` to speed up the first crawl.
-
-`robots.txt` only works at the root of a host, so `/earth-interactive/robots.txt` is ignored on github.io (it
-contains `Allow: /` anyway). That's why the sitemap must be submitted by hand until the custom domain is live.
 
 ### 5. Bing Webmaster Tools (also feeds DuckDuckGo, Yahoo, Ecosia, ChatGPT search)
 1. <https://www.bing.com/webmasters> → sign in → **Import from Google Search Console**. Verification and the sitemap come across.
 2. **IndexNow** (Bing, Yandex, Seznam, Naver; Bing shares it with its partners): already set up. The key is
    `indexNowKey` in `tools/site.config.mjs` (a public token, not a secret), and every deploy publishes
-   `<key>.txt` next to the pages. A key file in a subfolder is valid for URLs in that folder, so it works under
-   `/earth-interactive/` today; the request names it with `keyLocation`. After a deploy has finished, run once from
+   `<key>.txt` next to the pages. After a deploy has finished, run once from
    your machine:
 
    ```bash
@@ -180,23 +173,18 @@ contains `Allow: /` anyway). That's why the sitemap must be submitted by hand un
    changes (new pages, data refresh), not on every typo fix. Bing Webmaster Tools → IndexNow shows what arrived.
    To rotate the key, put a new random 32-hex string in the config and redeploy before submitting.
 
-## Moving to the custom domain later
+## The move to earth-interactive.com (November 2026)
 
-0. About two weeks before: ship a `sw.js` that, on the github.io host, loads pages from the network (or unregisters
-   itself). Otherwise returning visitors' old service worker keeps serving the cached globe on github.io after the move.
-1. Buy the domain, point its DNS at GitHub Pages and add it under repo **Settings → Pages → Custom domain**. With an
-   Actions deploy (ours) no `CNAME` file is needed; the setting is enough. Enable **Enforce HTTPS**.
-2. GitHub then 301-redirects `john-redman.github.io/earth-interactive/*` to the new domain, path for path, so rankings carry over.
-3. Change `url` in `tools/site.config.mjs` **and** `SITE_URL` in `js/site.js` (and the hard-coded URLs in `index.html`'s
-   canonical, OG tags and JSON-LD, and the embed snippet in `how-to-play.html`). Push. Canonicals, sitemap and OG URLs
-   all switch. Then re-render the marketing kit with the new address: `node tools/marketing/run.mjs compose video og contact`.
-4. The site now lives at the domain root, so `robots.txt` and `llms.txt` start working where tools look for them, and `ads.txt`
-   and `/.well-known/security.txt` become possible. Run `--indexnow` once after the move (the key file moves with the build).
-5. Search Console: add a **Domain** property for the new domain (DNS TXT verification), submit the new sitemap and
-   request indexing for the key pages. The Change of address tool must start from a domain-level property, so it
-   most likely won't accept `john-redman.github.io/earth-interactive/`; the 301s carry the move anyway. Bing: add
-   the new site and submit its sitemap.
-6. Keep the redirect forever (don't delete the github.io Pages setup).
+- The repository moved from `john-redman/earth-interactive` to the `Code-Redman-Studios` organisation. GitHub does not
+  redirect Pages sites after a transfer, so the old `john-redman.github.io/earth-interactive/` address stopped working
+  then (before launch, so little was lost). The interim address was `code-redman-studios.github.io/earth-interactive/`.
+- The site builds for `https://earth-interactive.com/` (`url` in `tools/site.config.mjs`, `SITE_URL` in
+  `js/site.js`, `index.html`'s canonical, OG and JSON-LD, the embed snippet in `how-to-play.html`).
+- With the custom domain set under **Settings → Pages**, GitHub 301-redirects `code-redman-studios.github.io/earth-interactive/*`
+  to the domain, path for path. Keep that Pages setup (and the repository's name and owner) as they are, or the redirect stops.
+- The service worker never runs on a `*.github.io` address and removes itself there (`RETIRE` in `sw.js`, `tempHost`
+  in `main.js`): a worker on a redirected host can't update itself and would serve its old copy for good.
+- After the move: Search Console Domain property (above), Bing import, and run `--indexnow` once.
 
 ## Core Web Vitals
 

@@ -1,5 +1,9 @@
 # After the domain is bought
 
+Status (6 November 2026): earth-interactive.com bought, repository moved to Code-Redman-Studios, the site
+builds for the domain and the service worker retires itself on github.io (steps 1 and 3). Next: DNS + custom domain
+(step 2), then 4–8.
+
 Run these in order once the domain exists. The full plan (brand and domain choices, costs, email, social handles)
 is in the owner's private planning page, not in this public repo:
 https://claude.ai/artifact/JQRYGWQQTjLRLjR8otrzfX
@@ -8,7 +12,7 @@ https://claude.ai/artifact/JQRYGWQQTjLRLjR8otrzfX
    host, loads pages from the network (or unregisters itself). Otherwise returning visitors' old worker keeps serving
    the cached globe after the move, because its update check is redirected and fails.
 2. **Point the domain at GitHub Pages:** repo Settings → Pages → Custom domain, then Enforce HTTPS. GitHub then
-   301-redirects every `john-redman.github.io/earth-interactive/…` URL to the same path. Don't rename or transfer the
+   301-redirects every `code-redman-studios.github.io/earth-interactive/…` URL to the same path. Don't rename or transfer the
    repo afterwards, or the redirect may stop.
 3. **Switch the URLs** (see `docs/seo.md` → "Moving to the custom domain later"): `url` in `tools/site.config.mjs`,
    `SITE_URL` in `js/site.js`, the canonical/OG/JSON-LD URLs in `index.html`, the embed snippet in `how-to-play.html`,

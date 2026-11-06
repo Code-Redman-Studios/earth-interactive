@@ -20,21 +20,32 @@ const CORE = [
   'vendor/three/lines/LineMaterial.js', 'vendor/three/lines/LineSegments2.js', 'vendor/three/lines/LineSegmentsGeometry.js',
 ];
 const FONTS = /^https:\/\/fonts\.(googleapis|gstatic)\.com\//;
+// On a *.github.io address this worker only removes itself (and its caches) and serves nothing: the site moved to
+// its own domain, GitHub redirects the github.io address there, and a worker left behind could never update again.
+const RETIRE = self.location.hostname.endsWith('.github.io');
+if (RETIRE) {
+  self.addEventListener('install', () => self.skipWaiting());
+  self.addEventListener('activate', e => e.waitUntil((async () => {
+    for (const k of await caches.keys()) if (k.startsWith('earth-')) await caches.delete(k);
+    await self.registration.unregister();
+    for (const c of await self.clients.matchAll({ type: 'window' })) c.navigate(c.url).catch(() => {});
+  })()));
+}
 
-self.addEventListener('install', e => {
+if (!RETIRE) self.addEventListener('install', e => {
   // cache: 'no-cache' asks the server every time (so a new deploy never installs stale files), but a file that has
   // not changed comes back as a 304 and is reused from the browser's HTTP cache: a deploy that only touches a few
   // files doesn't make returning visitors download the 1 MB map data and the 700 KB of three.js again
   e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE.map(u => new Request(u, { cache: 'no-cache' })))).then(() => self.skipWaiting()));
 });
 
-self.addEventListener('activate', e => {
+if (!RETIRE) self.addEventListener('activate', e => {
   e.waitUntil(caches.keys()
     .then(keys => Promise.all(keys.filter(k => k.startsWith('earth-') && k !== CACHE).map(k => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 
-self.addEventListener('fetch', e => {
+if (!RETIRE) self.addEventListener('fetch', e => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
