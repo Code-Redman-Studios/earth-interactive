@@ -8,7 +8,7 @@
 import { execFileSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 let failed = 0;
@@ -24,7 +24,7 @@ for (const f of files) {
 console.log(`✓ ${files.length} modules parse`);
 
 // 2. data
-const { default: data } = await import(path.join(root, 'data/world.js'));
+const { default: data } = await import(pathToFileURL(path.join(root, 'data/world.js')).href);
 for (const [k, v] of Object.entries(data.views)) {
   if (!v.units.length) fail(`view ${k} has no units`);
   for (const u of v.units) {

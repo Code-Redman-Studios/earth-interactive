@@ -12,11 +12,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import zlib from 'node:zlib';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const W = 512, H = 256, DEG = Math.PI / 180, KM_PER_DEG = 111.2;
-const { default: data } = await import(path.join(root, 'data/world.js'));
+const { default: data } = await import(pathToFileURL(path.join(root, 'data/world.js')).href);
 
 // ---------- land mask: scanline-fill every polygon of every unit (even-odd per polygon, so holes stay sea) ----------
 const land = new Uint8Array(W * H);

@@ -6,9 +6,9 @@
 // (plain app screenshots + the manifest's install-dialog images) · video (3 vertical clips and their covers, needs
 // ffmpeg) · og (og-image.png) · contact (contact sheet, needs ImageMagick).
 // Needs Playwright (PLAYWRIGHT=/path/to/playwright/index.mjs if it isn't installed here). Serves the repo itself.
-import http from 'node:http'; import fs from 'node:fs'; import path from 'node:path'; import { spawn } from 'node:child_process';
+import http from 'node:http'; import fs from 'node:fs'; import path from 'node:path'; import { spawn } from 'node:child_process'; import { fileURLToPath } from 'node:url';
 
-const ROOT = new URL('../../', import.meta.url).pathname, PORT = +(process.env.MK_PORT || 8765);
+const ROOT = fileURLToPath(new URL('../../', import.meta.url)), PORT = +(process.env.MK_PORT || 8765);
 const TYPES = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.mjs': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
   '.png': 'image/png', '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.mp3': 'audio/mpeg', '.mp4': 'video/mp4', '.webmanifest': 'application/manifest+json' };
 const server = http.createServer((req, res) => {
@@ -34,7 +34,7 @@ const STEPS = {
 const ORDER = ['capture', 'compose', 'screenshots', 'video', 'og', 'contact'];
 const want = process.argv.slice(2);
 const todo = want.length && !want.includes('all') ? ORDER.filter(k => want.includes(k)) : ORDER;
-const runStep = (file, args) => new Promise(res => spawn(process.execPath, [new URL(file, import.meta.url).pathname, ...args], { stdio: 'inherit', env }).on('exit', res));
+const runStep = (file, args) => new Promise(res => spawn(process.execPath, [fileURLToPath(new URL(file, import.meta.url)), ...args], { stdio: 'inherit', env }).on('exit', res));
 outer: for (const k of todo) for (const step of STEPS[k]) {
   const [file, ...args] = [].concat(step), t0 = Date.now();
   console.log(`\n▶ ${k}: ${file} ${args.join(' ')}`);

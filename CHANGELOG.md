@@ -4,6 +4,10 @@ All notable changes to EarthInteractive are documented here.
 
 ## [Unreleased]
 
+### Fixed (19 November)
+- **The globe no longer stays blank** after the page was laid out with no height (an embed in a collapsed frame, a hidden panel). It now appears as soon as there is room for it.
+- `npm run check`, `npm run build:data` and the marketing kit run on Windows too (they passed raw file paths where Node needs file URLs).
+
 ### Changed (owner requests, 16 October, evening)
 - **Phones get everything desktop has**: the live day & night clock (top right), the border view's description when you switch views, the compare tip, and the drifting clouds (a lighter version).
 - **Messages** wrap neatly on phones and stay clear of the buttons on the right.

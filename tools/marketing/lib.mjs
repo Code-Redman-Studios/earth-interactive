@@ -1,8 +1,9 @@
 // Shared helpers for the marketing pipeline (see README.md here): paths, the browser, opening the app, framing shots.
 import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 const { chromium } = await import(process.env.PLAYWRIGHT || 'playwright');
 /** The repo root, the working folder for raw captures and temp pages (git-ignored), and where the app is served. */
-export const ROOT = new URL('../../', import.meta.url).pathname;
+export const ROOT = fileURLToPath(new URL('../../', import.meta.url));
 export const S = ROOT + 'tools/marketing/.work';
 export const BASE = process.env.MK_BASE || 'http://127.0.0.1:8765/';
 fs.mkdirSync(S + '/raw', { recursive: true }); fs.mkdirSync(S + '/tmp', { recursive: true });
