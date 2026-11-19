@@ -3,7 +3,7 @@
 //
 // A slot with no ad takes no room on the public site (no empty "Advertisement" boxes for visitors). The grey
 // placeholders still show on localhost and with ?ads=preview, so the layout can be checked before a network is live.
-export const ADS = {
+const ADS = {
   enabled: true,
   minViewportWidth: 1100,           // side banners need this much width; narrower screens get the bottom banner
   slots: {

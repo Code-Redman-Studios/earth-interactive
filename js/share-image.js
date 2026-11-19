@@ -46,7 +46,7 @@ function lighten(hex, k) {
  * pair: { a: { o, hex, area, shape }, b: { … } } (shape: compare.pieceShapeFor(o)); url: link printed at the bottom.
  * Returns a PNG Blob.
  */
-export async function renderCompareImage(pair, url) {
+async function renderCompareImage(pair, url) {
   await Promise.all(['800', '700', '500'].map(w => document.fonts?.load(`${w} 40px "Plus Jakarta Sans"`).catch(() => {})));
   const [fa, fb] = await Promise.all([flagImage(pair.a.o.info.iso2), flagImage(pair.b.o.info.iso2)]);
   const cv = document.createElement('canvas'); cv.width = cv.height = S;

@@ -5,7 +5,7 @@ export const R = BASE + 'tools/marketing/.work/raw/';
 export const ICON = BASE + 'icons/icon.svg';
 /** The address printed on every image: follows tools/site.config.mjs, so a domain change is one re-render away. */
 export const URL_TXT = SITE.url.replace(/^https?:\/\//, '').replace(/\/$/, '');
-export const BASE_CSS = `${FONT_CSS}
+const BASE_CSS = `${FONT_CSS}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{width:100%;height:100%;overflow:hidden}
 body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:#f2f3ff;-webkit-font-smoothing:antialiased;

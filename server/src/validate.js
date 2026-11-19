@@ -15,7 +15,7 @@ export const GAMES = {
   classic: { rounds: 10, maxRound: 1000, once: false, minMsPerRound: 1000 },
 };
 
-export const MAX_DURATION_MS = 24 * 60 * 60 * 1000;
+const MAX_DURATION_MS = 24 * 60 * 60 * 1000;
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 const PERIOD = /^\d{4}-\d{2}-\d{2}$/;
 const UNIT_KEY = /^[A-Z0-9_]{1,40}$/;   // ADM0_A3 codes or X_<SLUG> overlays

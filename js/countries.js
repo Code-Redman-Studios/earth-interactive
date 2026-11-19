@@ -27,7 +27,7 @@ function borderColorOf(hex) {
   return '#' + new THREE.Color().setHSL(hsl.h, Math.min(1, hsl.s * 0.85), hsl.l * 0.62).getHexString();
 }
 
-export const R_FILL = 1.0015, R_LINE = 1.0028;
+const R_FILL = 1.0015, R_LINE = 1.0028;
 const HATCH_DIRS = [new THREE.Vector3(0.8, 1, 0.6), new THREE.Vector3(-1, 0.7, 0.45), new THREE.Vector3(0.35, -0.6, 1)];
 const NO_HATCH = new THREE.Vector3(0.8, 1, 0.6);
 const LIFT = { pulse: 1.012, steady: 1.008 };   // how far a highlighted country rises off the globe

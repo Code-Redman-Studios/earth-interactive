@@ -13,9 +13,9 @@ const liftFor = span => THREE.MathUtils.clamp(span * 0.03, 0.004, 0.038);
 // the soft shadow: a few offset copies stacked, so its edge fades instead of ending in a hard line
 const SHADOW_LAYERS = [0.6, 0.75, 0.9, 1.05, 1.2], SHADOW_ALPHA = 0.095, SHADOW_REACH = 1.6;
 // islands and exclaves this close to the rest of a country (coast to coast) lift out with it
-export const PIECE_GAP_KM = 1500;
+const PIECE_GAP_KM = 1500;
 // countries whose far parts are full members, not overseas possessions: their pieces always carry everything (Hawaii)
-export const WHOLE_PIECE = new Set(['USA']);
+const WHOLE_PIECE = new Set(['USA']);
 const _L = new THREE.Vector3(), _T = new THREE.Vector3(), _S = new THREE.Vector3();
 
 export class Compare {

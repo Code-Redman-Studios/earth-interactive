@@ -3,7 +3,7 @@
 // (no wind, drone, synthesised voices, 3D panning or pitch changes).
 import * as THREE from 'three';
 
-export const THRILLS = {
+const THRILLS = {
   screamSpeed: 20,      // rad/s of momentum where the crowd is fully screaming (built up over a few swipes)
   screamFrom: 12,       // rad/s where it starts to rise: one ordinary flick only gets a murmur
   riseTau: 0.6,         // s, how slowly the screams swell (they still die away quickly: fallTau)
@@ -17,7 +17,7 @@ export const THRILLS = {
 const smooth = (a, b, x) => { const t = THREE.MathUtils.clamp((x - a) / (b - a), 0, 1); return t * t * (3 - 2 * t); };
 
 /** Plays the recorded loops on a live AudioContext, faded by spin speed. */
-export class RideAudio {
+class RideAudio {
   constructor(ctx, dest) {
     this.ctx = ctx; this.dest = dest; this.ready = false; this.sources = [];
   }
@@ -47,7 +47,7 @@ export class RideAudio {
 }
 
 /** Master bus: volume → glue compressor → limiter → output. Returns the input gain. */
-export function createMaster(ctx, volume = THRILLS.volume) {
+function createMaster(ctx, volume = THRILLS.volume) {
   const master = ctx.createGain(); master.gain.value = volume;
   const comp = ctx.createDynamicsCompressor(); comp.threshold.value = -18; comp.ratio.value = 3;
   const limit = ctx.createDynamicsCompressor(); limit.threshold.value = -3; limit.ratio.value = 20; limit.attack.value = 0.002; limit.release.value = 0.1;
