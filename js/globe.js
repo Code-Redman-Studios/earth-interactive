@@ -280,6 +280,7 @@ export function createGlobe(canvas) {
     size: new THREE.Vector2(),
     resize() {
       const w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return; // hidden (display: none, a collapsed frame): sizing to 0 would make the camera NaN for good
       renderer.setSize(w, h, false);
       camera.aspect = w / h; camera.updateProjectionMatrix();
       globe.size.set(w, h);

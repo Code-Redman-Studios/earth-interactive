@@ -15,7 +15,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { geoArea, geoContains, geoCentroid } from 'd3-geo';
 import pc from 'polygon-clipping';
 import { VIEWS } from './views.config.mjs';
@@ -26,7 +26,7 @@ const t0 = Date.now();
 const base10 = read('ne_10m_admin_0_countries.geojson').features;
 const base50 = read('ne_50m_admin_0_countries.geojson').features;
 const overlays = read('ne_50m_admin_0_breakaway_disputed_areas.geojson').features;
-const { default: lo } = await import(path.join(here, '..', 'data', 'world.js'));
+const { default: lo } = await import(pathToFileURL(path.join(here, '..', 'data', 'world.js')).href);
 
 const R = 6371.0088;
 const PRECISION = 1000;     // same grid as world.js (0.001° ≈ 110 m)
