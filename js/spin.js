@@ -9,7 +9,7 @@
 import * as THREE from 'three';
 import { PINCH_MS } from './globe.js';
 
-export const SPIN = {
+const SPIN = {
   friction: 0.34,        // per second while spinning fast (lower = keeps momentum longer); ~2 s half-life
   slowFriction: 1.6,     // per second below `slowBelow`, so a slow drift settles instead of crawling forever
   slowBelow: 0.5,        // rad/s

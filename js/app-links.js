@@ -9,7 +9,7 @@
 // "Google Play and the Google Play logo are trademarks of Google LLC." somewhere on the page).
 // Using the store names in plain text, as below, is fine.
 
-export const STORE_LINKS = {
+const STORE_LINKS = {
   ios: '',     // e.g. https://apps.apple.com/app/id1234567890
   android: '', // e.g. https://play.google.com/store/apps/details?id=app.earthinteractive
 };

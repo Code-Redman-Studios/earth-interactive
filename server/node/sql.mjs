@@ -6,7 +6,7 @@
 import { fileURLToPath } from 'node:url';
 import { loadEnvFile, readConfig } from './config.js';
 
-export async function runSql(dbPath, sql) {
+async function runSql(dbPath, sql) {
   const { DatabaseSync } = await import('node:sqlite');
   const db = new DatabaseSync(dbPath);
   const out = [];

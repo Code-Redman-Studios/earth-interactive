@@ -12,7 +12,7 @@
 //  4. every letter may repeat ("fuuuuck"), so repeated characters don't get past it.
 // It is a speed bump, not a guarantee — moderation (docs/backend.md) handles the rest.
 
-export const NAME_MIN = 3;
+const NAME_MIN = 3;
 export const NAME_MAX = 20;
 
 // Match anywhere inside a token. Only words that are (almost) never part of an innocent word.
@@ -68,7 +68,7 @@ export function fold(str) {
 }
 
 /** Token lists to check: one per reading of the ambiguous leet characters. */
-export function skeletons(str) {
+function skeletons(str) {
   const base = fold(str);
   return ['i', 'l'].map(amb => base
     .replace(AMBIGUOUS, amb)

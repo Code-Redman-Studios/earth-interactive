@@ -12,7 +12,7 @@ import { SKY } from './sun.js';
  * Sea lanes as [lon, lat] waypoints, kept off the coasts (canals are crossed). Not charts: close enough to read as
  * "ships go here". `ships` is how many sail it at once, both ways.
  */
-export const ROUTES = [
+const ROUTES = [
   { name: 'Shanghai – Rotterdam via Suez', ships: 14, path: [
     [122.6, 30.9], [122.4, 28], [120.2, 24.6], [117.8, 22.6], [114.6, 21.7], [111.5, 18.2], [110, 13], [107, 7.5], [104.8, 3],
     [104.5, 1.28], [103.9, 1.24], [103.2, 1.25], [102.3, 2.0], [100.6, 3.3], [98.4, 5.4], [95.2, 6.3], [88, 5.8], [81, 5.2], [76, 6.6], [66, 11.5], [55, 13.4],
@@ -59,7 +59,7 @@ export const ROUTES = [
 
 // The two canals the lanes cross, drawn as water (the coastline data has no canals): [lon, lat] from sea to sea,
 // on the same course as the lanes above. Their width follows the ships on screen (see Canals).
-export const CANALS = [
+const CANALS = [
   { name: 'Suez Canal', path: [[32.57, 29.9], [32.57, 30.05], [32.45, 30.3], [32.33, 30.55], [32.31, 30.85], [32.31, 31.12], [32.34, 31.28]] },
   { name: 'Panama Canal', path: [[-79.91, 9.42], [-79.92, 9.3], [-79.8, 9.18], [-79.69, 9.12], [-79.62, 9.03], [-79.56, 8.9], [-79.53, 8.82]] },
 ];

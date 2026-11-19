@@ -12,7 +12,7 @@
 // Ad IDs: Google's public TEST units are used until you fill in REAL and set testing to false.
 // Never click your own live ads; add your phone under AdMob > Settings > Test devices.
 
-export const NATIVE_ADS = {
+const NATIVE_ADS = {
   enabled: true,
   testing: true,                    // set false for the store build, after the REAL ids below are filled in
   // Your AdMob ad unit ids (AdMob > Apps > EarthInteractive > Ad units). App ids go in the native
@@ -35,7 +35,7 @@ export const NATIVE_ADS = {
 };
 
 /** True inside the Capacitor app (Android or iOS), false on the website. */
-export const isNative = () => !!window.Capacitor?.isNativePlatform?.();
+const isNative = () => !!window.Capacitor?.isNativePlatform?.();
 
 const noop = async () => false;
 const OFF = Object.freeze({ native: false, platform: 'web', showInterstitial: noop, showRewarded: noop, haptic: () => {}, privacyOptions: noop, privacyRequired: false });
